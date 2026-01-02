@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donghyuk Lee</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="main-content">
+            <div class="left-column">
+                <h1 class="name">DONGHYUK LEE</h1>
+                <div class="section">
+                    <h2 class="section-title">Research:</h2>
+                    <ul class="list">
+                        <li><a href="#" class="menu-item" data-type="research" data-item="1">Light Spectrum Predicting for VR</a></li>
+                        <li><a href="#" class="menu-item" data-type="research" data-item="2">DeepMetricEye</a></li>
+                        <li><a href="#" class="menu-item" data-type="research" data-item="3">Realistic Earthquake Simulation</a></li>
+                        <li><a href="#" class="menu-item" data-type="research" data-item="4">Fungal Morphology Simulation</a></li>
+                        <li><a href="#" class="menu-item" data-type="research" data-item="5">Delta-E Color Shift Method</a></li>
+                        <li><a href="#" class="menu-item" data-type="research" data-item="6">Semantic Artificial Life System</a></li>
+                        <li><a href="#" class="menu-item" data-type="research" data-item="7">Spinal Postural Wearable Devices Review</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links">
+                    <a href="#" class="link" id="about-link">About</a>
+                    <a href="#" class="link" id="contact-link">Contact</a>
+                    <a href="#" class="link" id="photos-link">Photos</a>
+                </div>
+            </div>
+            
+            <!-- 색상 테마 선택기 -->
+            <div class="color-picker">
+                <div class="color-dot" id="theme-dot"></div>
+            </div>
+            
+            <!-- 다크/라이트 모드 버튼 -->
+            <div class="theme-toggle" id="theme-toggle">
+                <span class="theme-icon" id="theme-icon">🕊️</span>
+            </div>
+            
+            <!-- 메모 버튼 -->
+            <div class="memo-toggle" id="memo-toggle"></div>
+            
+            <!-- 쥐 애니메이션 요소 -->
+            <div class="animation-mouse" id="animation-mouse">🐁</div>
+            
+            <!-- 메모 섹션 -->
+            <div class="memo-section" id="memo-section" style="display: none;">
+                <div class="memo-content">
+                    <div class="memo-header">
+                        <h3 class="memo-title">Status Update</h3>
+                        <button class="memo-close" id="memo-close">×</button>
+                    </div>
+                    <div class="memo-body">
+                        <div class="memo-display" id="memo-display">
+                            <!-- 여기에 근황을 작성하세요 -->
+                            <!-- 예시:
+                            <div class="memo-entry">
+                                <div class="memo-display-date">2024년 1월 15일</div>
+                                <div class="memo-display-message">새로운 연구 프로젝트를 시작했습니다.</div>
+                            </div>
+                            -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="right-column">
+                <!-- About Section -->
+                <div class="content-section" id="about-section">
+                    <div class="section-content-wrapper">
+                        <h2 class="section-main-title">About</h2>
+                        <p class="biography">
+                            Dr. Donghyuk Lee is a computer scientist and interdisciplinary researcher known for his work in HCI and immersive technologies. His expertise ranges from advanced eye-tracking, VR display color rendering to digital twin simulations and realistic disaster modeling. Dr. Lee's background uniquely combines technical innovation with design thinking, and he collaborates with both academic and industry partners to bridge cutting-edge research with interactive technology.
+                        </p>
+                        
+                        <div class="about-section-content">
+                            <p class="biography">
+                                Dr. Lee holds a Ph.D. in Computer Science from the Royal College of Art (2024), an M.Sc. in Design from Politecnico di Milano (2017), and an Honours B.Sc. in Design from the Central Academy of Fine Arts (2013). His academic journey has spanned Asia and Europe: from Seoul to Milan to London. Between 2017 and 2020, he was a College Lecturer at the Central Academy of Fine Arts in Seoul, and in 2016–2017 he worked as an HCI Researcher in Italy with Piaggio's innovation group, exploring novel interaction concepts for the Vespa vehicle series.
+                            </p>
+                            
+                            <h3 class="about-subtitle">Professional Roles and Projects:</h3>
+                            
+                            <ul class="about-list">
+                                <li class="about-list-item">
+                                    <strong>Visiting Scholar, MIT CSAIL</strong> (2025–Present): Dr. Lee is currently a visiting researcher at MIT's Computer Science & Artificial Intelligence Laboratory, where he collaborates with Prof. Stefanie Mueller's group. At CSAIL he develops intelligent interfaces using conductive flexible fabrics and explores bio-inspired computational materials (e.g. simulating fungal growth for self-grown textiles).
+                                </li>
+                                <li class="about-list-item">
+                                    <strong>Editor-in-Chief, interactives Journal</strong> (2025–Present): He is the founding Editor-in-Chief of <em>interactives</em> (ISSN 2755-6336), an experimental open-access journal focused on HCI, game studies, and new media. Dr. Lee leads the journal's editorial direction and ethics, and he spearheaded the development of its digital platform enabling interactive content in research papers (integrating videos, demos, and an AI-assisted review process).
+                                </li>
+                                <li class="about-list-item">
+                                    <strong>Postdoctoral Research, RCA & XR Network+</strong> (2024–2025): As a Postdoctoral Research Associate at the Royal College of Art, Dr. Lee co-led a UKRI/EPSRC-funded project in partnership with Foster + Partners and the University of New South Wales. He helped develop a high-fidelity earthquake simulation environment in Unreal Engine for urban disaster modeling and virtual production. This interdisciplinary project advanced realistic visualization for disaster training and was recognized as an Outstanding Project by the XR Network+ program.
+                                </li>
+                            </ul>
+                            
+                            <h3 class="about-subtitle">Publications and Patents</h3>
+                            <p class="biography">
+                                Dr. Lee has authored numerous peer-reviewed publications in leading computer graphics and HCI venues. Notably, his recent work on VR display optimization was accepted in the IEEE <em>Transactions on Visualization and Computer Graphics</em> (TVCG), and he has presented research at the ACM SIGGRAPH Asia conference. He is also the inventor of several patent-pending technologies, including a method for decoding pupillary oscillations to infer brain arousal and a color calibration technique for VR displays – the latter already licensed for use in commercial VR platforms.
+                            </p>
+                            
+                            <h3 class="about-subtitle">Awards and Honors</h3>
+                            <p class="biography">
+                                Dr. Lee's work has earned international recognition. He received an <em>Honorary Mention</em> at the Prix Ars Electronica (2018) and a <em>New Face Award</em> from the Japan Media Arts Festival (2019), honors that highlight the creative and impactful nature of his projects. During his early career, one of his interactive designs was even collected by a national art museum, and he won First Prize in his academy's graduation exhibition – early achievements that reflect his strong artistic roots. Throughout his career, Dr. Donghyuk Lee has remained dedicated to bridging the worlds of scientific research and interactive technology, integrating his design background with advanced engineering to drive innovation.
+                            </p>
+                        </div>
+                        
+                        <div class="photo-container">
+                            <div class="photo-placeholder"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Section -->
+                <div class="content-section" id="contact-section" style="display: none;">
+                    <div class="section-content-wrapper">
+                        <h2 class="section-main-title">Contact</h2>
+                        <div class="contact-content">
+                            <p class="contact-item">
+                                <strong>Email:</strong> donghyuk.lee@example.com
+                            </p>
+                            <p class="contact-item">
+                                <strong>Phone:</strong> +1 (555) 123-4567
+                            </p>
+                            <p class="contact-item">
+                                <strong>Location:</strong> Seoul, South Korea
+                            </p>
+                            <p class="contact-item">
+                                <strong>LinkedIn:</strong> <a href="#" class="contact-link">linkedin.com/in/donghyuklee</a>
+                            </p>
+                            <p class="contact-item">
+                                <strong>GitHub:</strong> <a href="#" class="contact-link">github.com/donghyuklee</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Research Section 1: Light Spectrum Predicting for VR -->
+                <div class="content-section research-detail-section" id="research-item-1" style="display: none;">
+                    <div class="section-content-wrapper">
+                        <h2 class="section-main-title">Light Spectrum Predicting for VR</h2>
+                        <div class="research-detail-content">
+                            <div class="research-figure-container">
+                                <div class="research-figure">
+                                    <div class="figure-placeholder"></div>
+                                    <p class="figure-caption">Figure 1: An overview of our approach.</p>
+                                </div>
+                            </div>
+                            <div class="research-text-content">
+                                <h3 class="research-subtitle">Abstract</h3>
+                                <p class="research-description">
+                                    Predicting the Light Spectrum of Virtual Reality Scenarios for Non-Image-Forming Visual Evaluation. 
+                                    This research presents a multi-stage process for analyzing virtual reality scenarios to evaluate 
+                                    their effect on the Non-Image-Forming (NIF) visual system, aiming to reduce digital eye strain 
+                                    and sleep disorders.
+                                </p>
+                                <h3 class="research-subtitle">Methodology</h3>
+                                <p class="research-description">
+                                    The approach involves extracting optical data from VR headsets, processing virtual scenarios through 
+                                    field of view clipping, lens attenuation calculation, gamma correction, and spectral conversion to 
+                                    predict melanopic equivalent daylight illuminance (M-EDI) and five photoreceptor radiation efficacy (FPRE) maps.
+                                </p>
+                                <h3 class="research-subtitle">Publication</h3>
+                                <p class="research-description">
+                                    Presented at IEEE VR 2023
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Research Section 2: DeepMetricEye -->
+                <div class="content-section research-detail-section" id="research-item-2" style="display: none;">
+                    <div class="section-content-wrapper">
+                        <h2 class="section-main-title">DeepMetricEye</h2>
+                        <div class="research-detail-content">
+                            <div class="research-figure-container">
+                                <div class="research-figure">
+                                    <div class="figure-placeholder"></div>
+                                    <p class="figure-caption">Figure 1: Deep learning-based eye-tracking system architecture.</p>
+                                </div>
+                            </div>
+                            <div class="research-text-content">
+                                <h3 class="research-subtitle">Abstract</h3>
+                                <p class="research-description">
+                                    DeepMetricEye is a deep learning-based eye-tracking system designed for precise gaze measurement 
+                                    and analysis. The system utilizes advanced neural network architectures to achieve high accuracy 
+                                    in eye movement tracking and gaze prediction.
+                                </p>
+                                <h3 class="research-subtitle">Key Features</h3>
+                                <p class="research-description">
+                                    Real-time gaze tracking, high precision measurement, and robust performance across various 
+                                    lighting conditions and user demographics.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Research Section 3: Realistic Earthquake Simulation -->
+                <div class="content-section research-detail-section" id="research-item-3" style="display: none;">
+                    <div class="section-content-wrapper">
+                        <h2 class="section-main-title">Realistic Earthquake Simulation</h2>
+                        <div class="research-detail-content">
+                            <div class="research-figure-container">
+                                <div class="research-figure">
+                                    <div class="figure-placeholder"></div>
+                                    <p class="figure-caption">Figure 1: Digital twin simulation environment.</p>
+                                </div>
+                            </div>
+                            <div class="research-text-content">
+                                <h3 class="research-subtitle">Abstract</h3>
+                                <p class="research-description">
+                                    Digital twin simulations for realistic earthquake modeling and disaster preparedness. 
+                                    This project develops high-fidelity earthquake simulation environments using Unreal Engine 
+                                    for urban disaster modeling and virtual production.
+                                </p>
+                                <h3 class="research-subtitle">Applications</h3>
+                                <p class="research-description">
+                                    Disaster training, urban planning, emergency response preparation, and virtual production 
+                                    for realistic visualization of seismic events.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Research Section 4: Fungal Morphology Simulation -->
+                <div class="content-section research-detail-section" id="research-item-4" style="display: none;">
+                    <div class="section-content-wrapper">
+                        <h2 class="section-main-title">Fungal Morphology Simulation</h2>
+                        <div class="research-detail-content">
+                            <div class="research-figure-container">
+                                <div class="research-figure">
+                                    <div class="figure-placeholder"></div>
+                                    <p class="figure-caption">Figure 1: Computational modeling of fungal growth patterns.</p>
+                                </div>
+                            </div>
+                            <div class="research-text-content">
+                                <h3 class="research-subtitle">Abstract</h3>
+                                <p class="research-description">
+                                    Computational modeling of fungal growth patterns and morphological development. 
+                                    This research explores bio-inspired computational materials, simulating fungal growth 
+                                    for self-grown textiles and intelligent interfaces.
+                                </p>
+                                <h3 class="research-subtitle">Research Context</h3>
+                                <p class="research-description">
+                                    Conducted at MIT CSAIL in collaboration with Prof. Stefanie Mueller's group, 
+                                    exploring conductive flexible fabrics and bio-inspired computational materials.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Research Section 5: Delta-E Color Shift Method -->
+                <div class="content-section research-detail-section" id="research-item-5" style="display: none;">
+                    <div class="section-content-wrapper">
+                        <h2 class="section-main-title">Delta-E Color Shift Method</h2>
+                        <div class="research-detail-content">
+                            <div class="research-figure-container">
+                                <div class="research-figure">
+                                    <div class="figure-placeholder"></div>
+                                    <p class="figure-caption">Figure 1: Color calibration technique for VR displays.</p>
+                                </div>
+                            </div>
+                            <div class="research-text-content">
+                                <h3 class="research-subtitle">Abstract</h3>
+                                <p class="research-description">
+                                    Novel method for measuring and correcting color shifts in display systems. 
+                                    This color calibration technique for VR displays has been licensed for use 
+                                    in commercial VR platforms.
+                                </p>
+                                <h3 class="research-subtitle">Impact</h3>
+                                <p class="research-description">
+                                    Patent-pending technology that improves color accuracy in virtual reality 
+                                    displays, enhancing user experience and visual fidelity.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Research Section 6: Semantic Artificial Life System -->
+                <div class="content-section research-detail-section" id="research-item-6" style="display: none;">
+                    <div class="section-content-wrapper">
+                        <h2 class="section-main-title">Semantic Artificial Life System</h2>
+                        <div class="research-detail-content">
+                            <div class="research-figure-container">
+                                <div class="research-figure">
+                                    <div class="figure-placeholder"></div>
+                                    <p class="figure-caption">Figure 1: AI system architecture for artificial life simulation.</p>
+                                </div>
+                            </div>
+                            <div class="research-text-content">
+                                <h3 class="research-subtitle">Abstract</h3>
+                                <p class="research-description">
+                                    AI system for creating and simulating artificial life forms with semantic understanding. 
+                                    This research combines artificial intelligence with biological simulation to create 
+                                    intelligent virtual organisms.
+                                </p>
+                                <h3 class="research-subtitle">Capabilities</h3>
+                                <p class="research-description">
+                                    Semantic understanding, evolutionary simulation, and interactive artificial life forms 
+                                    with adaptive behaviors.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Research Section 7: Spinal Postural Wearable Devices Review -->
+                <div class="content-section research-detail-section" id="research-item-7" style="display: none;">
+                    <div class="section-content-wrapper">
+                        <h2 class="section-main-title">Spinal Postural Wearable Devices Review</h2>
+                        <div class="research-detail-content">
+                            <div class="research-figure-container">
+                                <div class="research-figure">
+                                    <div class="figure-placeholder"></div>
+                                    <p class="figure-caption">Figure 1: Comprehensive review of wearable devices for spinal posture monitoring.</p>
+                                </div>
+                            </div>
+                            <div class="research-text-content">
+                                <h3 class="research-subtitle">Abstract</h3>
+                                <p class="research-description">
+                                    Comprehensive review and analysis of wearable devices for spinal posture monitoring. 
+                                    This research evaluates current technologies, their effectiveness, and potential 
+                                    improvements for postural health.
+                                </p>
+                                <h3 class="research-subtitle">Scope</h3>
+                                <p class="research-description">
+                                    Analysis of existing wearable devices, evaluation of monitoring accuracy, 
+                                    and recommendations for future development in spinal posture tracking technology.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Photos Section -->
+                <div class="content-section" id="photos-section" style="display: none;">
+                    <div class="section-content-wrapper">
+                        <h2 class="section-main-title">Photos</h2>
+                        <div class="photos-content">
+                            <div class="photo-grid">
+                                <div class="photo-item photo-item-1">
+                                    <div class="photo-placeholder"></div>
+                                    <div class="photo-caption">Caption 1</div>
+                                </div>
+                                <div class="photo-item photo-item-2">
+                                    <div class="photo-placeholder"></div>
+                                    <div class="photo-caption">Caption 2</div>
+                                </div>
+                                <div class="photo-item photo-item-3">
+                                    <div class="photo-placeholder"></div>
+                                    <div class="photo-caption">Caption 3</div>
+                                </div>
+                                <div class="photo-item photo-item-4">
+                                    <div class="photo-placeholder"></div>
+                                    <div class="photo-caption">Caption 4</div>
+                                </div>
+                                <div class="photo-item photo-item-5">
+                                    <div class="photo-placeholder"></div>
+                                    <div class="photo-caption">Caption 5</div>
+                                </div>
+                                <div class="photo-item photo-item-6">
+                                    <div class="photo-placeholder"></div>
+                                    <div class="photo-caption">Caption 6</div>
+                                </div>
+                                <div class="photo-item photo-item-7">
+                                    <div class="photo-placeholder"></div>
+                                    <div class="photo-caption">Caption 7</div>
+                                </div>
+                                <div class="photo-item photo-item-8">
+                                    <div class="photo-placeholder"></div>
+                                    <div class="photo-caption">Caption 8</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+
