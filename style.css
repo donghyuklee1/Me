@@ -467,11 +467,21 @@ body.dark-mode .figure-caption {
     border-bottom: none;
     box-sizing: border-box;
     display: block;
+    filter: grayscale(100%);
+    transition: filter 0.3s ease;
+}
+
+.photo-item:hover .photo-image {
+    filter: grayscale(0%);
 }
 
 body.dark-mode .photo-image {
     border-color: #ffffff;
-    filter: invert(100%) grayscale(100%);
+    filter: grayscale(100%) invert(100%);
+}
+
+body.dark-mode .photo-item:hover .photo-image {
+    filter: grayscale(0%) invert(100%);
 }
 
 .photo-caption {
@@ -479,10 +489,10 @@ body.dark-mode .photo-image {
     bottom: 0;
     left: 0;
     right: 0;
-    padding: 12px 15px;
+    padding: 12px 15px 12px 8px;
     background-color: #000000;
     color: #ffffff;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 600;
     text-align: left;
     line-height: 1.5;
@@ -498,6 +508,24 @@ body.dark-mode .photo-caption {
     background-color: #ffffff;
     color: #000000;
     border-top-color: #ffffff;
+}
+
+.photo-date {
+    font-size: 11px;
+    font-weight: 700;
+    color: #ffffff;
+    flex-shrink: 0;
+    margin-right: 10px;
+}
+
+body.dark-mode .photo-date {
+    color: #000000;
+}
+
+.photo-text {
+    flex: 1;
+    font-size: 16px;
+    font-weight: 600;
 }
 
 .photo-placeholder::before {
@@ -941,7 +969,7 @@ body.dark-mode .color-dot {
     }
     
     .left-column {
-        position: relative;
+    position: relative;
         width: 100%;
         max-width: 100%;
         height: auto;
