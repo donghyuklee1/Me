@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
-    
+
     // Research 섹션 제목은 클릭 불가 (제거됨)
 
     // 현재 선택된 섹션 추적
@@ -192,9 +192,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 memoSection.style.display = 'none';
                 if (memoToggle) {
                     memoToggle.classList.remove('active');
+                    }
                 }
-            }
-        });
+            });
     }
     
     // 메모 닫기
@@ -236,9 +236,21 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         // 모든 텍스트 색상 변경
-        const textElements = document.querySelectorAll('body, .name, .section-title, .list li a, .link, .section-main-title, .biography, .contact-item, .research-title, .research-subtitle, .contact-link, .about-subtitle, .about-list-item, .memo-title, .memo-close');
+        const textElements = document.querySelectorAll('body, .name, .section-title, .list li a, .link, .section-main-title, .biography, .contact-item, .research-title, .research-subtitle, .contact-link, .about-subtitle, .about-list-item, .memo-title, .memo-close, .photo-caption');
         textElements.forEach(el => {
             el.style.color = actualColor;
+        });
+        
+        // 캡션 배경색도 테마 색상으로 변경
+        const photoCaptions = document.querySelectorAll('.photo-caption');
+        photoCaptions.forEach(el => {
+            if (isDark) {
+                el.style.backgroundColor = actualColor;
+                el.style.borderTopColor = actualColor;
+            } else {
+                el.style.backgroundColor = actualColor;
+                el.style.borderTopColor = actualColor;
+            }
         });
         
         // 설명 텍스트는 회색 유지하되 약간 조정
@@ -260,9 +272,27 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         
         // 사진 테두리 색상 변경
-        const photoBorders = document.querySelectorAll('.photo-item .photo-placeholder');
+        const photoBorders = document.querySelectorAll('.photo-item .photo-placeholder, .photo-image');
         photoBorders.forEach(el => {
             el.style.borderColor = actualColor;
+        });
+        
+        // 캡션 배경색과 테두리 색상도 테마 색상으로 변경
+        const photoCaptions = document.querySelectorAll('.photo-caption');
+        photoCaptions.forEach(el => {
+            el.style.backgroundColor = actualColor;
+            el.style.borderTopColor = actualColor;
+            // 텍스트 색상은 배경에 맞게 조정
+            if (isDark) {
+                el.style.color = '#000000';
+            } else {
+                // 라이트모드에서는 배경색에 따라 텍스트 색상 조정
+                if (color === '#000000') {
+                    el.style.color = '#ffffff';
+                } else {
+                    el.style.color = '#ffffff';
+                }
+            }
         });
         
         // 호버 효과 색상도 조정
