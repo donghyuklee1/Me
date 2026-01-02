@@ -477,11 +477,11 @@ body.dark-mode .figure-caption {
 
 body.dark-mode .photo-image {
     border-color: #ffffff;
-    filter: grayscale(100%) invert(100%);
+    filter: grayscale(100%);
 }
 
 body.dark-mode .photo-item:hover .photo-image {
-    filter: grayscale(0%) invert(100%);
+    filter: grayscale(0%);
 }
 
 .photo-caption {
