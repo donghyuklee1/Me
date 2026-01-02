@@ -241,18 +241,6 @@ document.addEventListener('DOMContentLoaded', function() {
             el.style.color = actualColor;
         });
         
-        // 캡션 배경색도 테마 색상으로 변경
-        const photoCaptions = document.querySelectorAll('.photo-caption');
-        photoCaptions.forEach(el => {
-            if (isDark) {
-                el.style.backgroundColor = actualColor;
-                el.style.borderTopColor = actualColor;
-            } else {
-                el.style.backgroundColor = actualColor;
-                el.style.borderTopColor = actualColor;
-            }
-        });
-        
         // 설명 텍스트는 회색 유지하되 약간 조정
         const descriptions = document.querySelectorAll('.research-description');
         descriptions.forEach(el => {
@@ -551,7 +539,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // 새 클릭 이벤트 (라이트모드일 때)
     if (themeToggle) {
-        // 버튼과 아이콘 모두에 이벤트 리스너 추가
+        // 버튼 전체에 이벤트 리스너 추가
         themeToggle.addEventListener('click', function(e) {
             e.preventDefault();
             e.stopPropagation();
@@ -562,6 +550,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
         
+        // 아이콘에도 이벤트 리스너 추가 (버블링 방지)
         if (themeIcon) {
             themeIcon.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -591,6 +580,15 @@ document.addEventListener('DOMContentLoaded', function() {
     } else {
         console.error('animationMouse element not found!');
     }
+    
+    // 디버깅: 모든 버튼 요소 확인
+    console.log('Button elements check:', {
+        themeToggle: themeToggle,
+        themeIcon: themeIcon,
+        animationMouse: animationMouse,
+        colorDot: colorDot,
+        memoToggle: memoToggle
+    });
     
     // 디버깅 정보
     console.log('Theme toggle initialized:', {
