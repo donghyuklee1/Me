@@ -1057,6 +1057,38 @@ body.dark-mode .color-dot {
         margin-bottom: 10px;
     }
     
+    /* Research 토글 (모바일) */
+    .research-toggle-mobile {
+        cursor: pointer;
+        pointer-events: auto;
+        user-select: none;
+    }
+    
+    .research-toggle-mobile .toggle-icon {
+        font-size: 16px;
+        margin-left: 8px;
+        display: inline-block;
+        transition: transform 0.3s ease;
+    }
+    
+    .research-toggle-mobile.collapsed .toggle-icon {
+        transform: rotate(-90deg);
+    }
+    
+    .research-list {
+        max-height: 1000px;
+        overflow: hidden;
+        transition: max-height 0.3s ease, opacity 0.3s ease;
+        opacity: 1;
+    }
+    
+    .research-list.collapsed {
+        max-height: 0;
+        opacity: 0;
+        margin: 0;
+        padding: 0;
+    }
+    
     .list {
         font-size: 18px;
     }
@@ -1112,9 +1144,12 @@ body.dark-mode .color-dot {
         min-height: 45px;
     }
     
+    /* 토글 버튼들을 우측 상단으로 이동 */
     .color-picker {
-        bottom: 15px;
-        left: 15px;
+        bottom: auto;
+        top: 10px;
+        left: auto;
+        right: 50px;
     }
     
     .color-dot {
@@ -1123,31 +1158,39 @@ body.dark-mode .color-dot {
     }
     
     .theme-toggle {
-        bottom: 15px;
-        left: 40px;
+        bottom: auto;
+        top: 10px;
+        left: auto;
+        right: 30px;
         width: 14px;
         height: 14px;
         font-size: 14px;
     }
     
     .memo-toggle {
-        bottom: 15px;
-        left: 60px;
+        bottom: auto;
+        top: 10px;
+        left: auto;
+        right: 10px;
         width: 14px;
         height: 14px;
     }
     
     .memo-section {
-        bottom: 40px;
+        bottom: auto;
+        top: 50px;
         left: 15px;
-        width: calc(100% - 30px);
-        max-width: calc(100% - 30px);
+        right: 15px;
+        width: auto;
+        max-width: none;
         max-height: 400px;
     }
     
     .animation-mouse {
-        bottom: 15px;
-        left: 40px;
+        bottom: auto;
+        top: 10px;
+        left: auto;
+        right: 30px;
         width: 14px;
         height: 14px;
         font-size: 14px;
