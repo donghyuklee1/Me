@@ -116,7 +116,9 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // 근황 데이터 (여기에 직접 작성하세요)
     const statusUpdates = [
-        { date: '2026년 1월 3일', message: '새로운 웹사이트로 이전했습니다.' }
+        // { date: '2024년 1월 15일', message: '새로운 연구 프로젝트를 시작했습니다.' },
+        // { date: '2024년 1월 20일', message: 'IEEE VR 2023 논문이 게재되었습니다.' },
+        // 더 많은 근황을 추가하려면 위 형식으로 추가하세요
     ];
     
     // 근황 표시 함수
@@ -150,12 +152,12 @@ document.addEventListener('DOMContentLoaded', function() {
         nameElement.addEventListener('click', function(e) {
             e.preventDefault();
             // CV PDF 파일 경로 (실제 파일 경로로 변경하세요)
-            const cvPath = 'CV.pdf';
+            const cvPath = 'cv/Donghyuk_Lee_CV.pdf';
             
             // 파일 다운로드
             const link = document.createElement('a');
             link.href = cvPath;
-            link.download = 'CV.pdf';
+            link.download = 'Donghyuk_Lee_CV.pdf';
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
@@ -280,6 +282,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             }
         });
+        
         
         // 호버 효과 색상도 조정
         const style = document.createElement('style');
@@ -596,4 +599,50 @@ document.addEventListener('DOMContentLoaded', function() {
         isDarkMode: isDarkMode,
         colorDot: colorDot
     });
+    
+    // 모바일에서 Research 항목 접기/펼치기
+    const researchToggleMobile = document.getElementById('research-toggle-mobile');
+    const researchList = document.getElementById('research-list');
+    
+    if (researchToggleMobile && researchList) {
+        // 모바일에서만 작동하도록 체크
+        const checkMobile = () => window.innerWidth <= 768;
+        
+        // 초기 상태 설정
+        if (checkMobile()) {
+            researchList.classList.add('collapsed');
+            researchToggleMobile.classList.add('collapsed');
+        }
+        
+        researchToggleMobile.addEventListener('click', function(e) {
+            if (checkMobile()) {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                const isCollapsed = researchList.classList.contains('collapsed');
+                
+                if (isCollapsed) {
+                    researchList.classList.remove('collapsed');
+                    researchToggleMobile.classList.remove('collapsed');
+                } else {
+                    researchList.classList.add('collapsed');
+                    researchToggleMobile.classList.add('collapsed');
+                }
+            }
+        });
+        
+        // 화면 크기 변경 시 처리
+        window.addEventListener('resize', function() {
+            if (checkMobile()) {
+                // 모바일에서는 접혀있음 (사용자가 펼친 경우 제외)
+                if (!researchList.classList.contains('collapsed') && researchList.style.maxHeight === '') {
+                    // 자동으로 접지 않음 (사용자 선택 유지)
+                }
+            } else {
+                // 데스크톱에서는 항상 펼쳐져 있음
+                researchList.classList.remove('collapsed');
+                researchToggleMobile.classList.remove('collapsed');
+            }
+        });
+    }
 });
