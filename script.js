@@ -116,7 +116,9 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // 근황 데이터 (여기에 직접 작성하세요)
     const statusUpdates = [
-        { date: '2026년 1월 3일', message: '새로운 사이트로 이전했습니다.' }
+        // { date: '2024년 1월 15일', message: '새로운 연구 프로젝트를 시작했습니다.' },
+        // { date: '2024년 1월 20일', message: 'IEEE VR 2023 논문이 게재되었습니다.' },
+        // 더 많은 근황을 추가하려면 위 형식으로 추가하세요
     ];
     
     // 근황 표시 함수
@@ -389,24 +391,42 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // 저장된 테마 불러오기
     let isDarkMode = localStorage.getItem('darkMode') === 'true';
+    const isMobile = window.innerWidth <= 768;
+    
     if (isDarkMode) {
         body.classList.add('dark-mode');
         if (themeIcon) {
             themeIcon.textContent = '🐁';
         }
-    if (themeToggle) {
-            themeToggle.style.display = 'none';
-            themeToggle.style.animation = 'none';
-            themeToggle.style.top = '20px';
-            themeToggle.style.bottom = 'auto';
-            themeToggle.style.left = '0';
-            themeToggle.style.opacity = '0';
+        if (themeToggle) {
+            if (isMobile) {
+                // 모바일: 고정 위치
+                themeToggle.style.display = 'none';
+                themeToggle.style.opacity = '0';
+            } else {
+                // 데스크톱: 기존 로직
+                themeToggle.style.display = 'none';
+                themeToggle.style.animation = 'none';
+                themeToggle.style.top = '20px';
+                themeToggle.style.bottom = 'auto';
+                themeToggle.style.left = '0';
+                themeToggle.style.opacity = '0';
+            }
         }
         // 쥐가 버튼 위치에 있도록
         if (animationMouse) {
             animationMouse.style.opacity = '1';
-            animationMouse.style.bottom = '20px';
-            animationMouse.style.left = '50px';
+            if (isMobile) {
+                // 모바일: 고정 위치
+                animationMouse.style.top = '10px';
+                animationMouse.style.right = '30px';
+                animationMouse.style.bottom = 'auto';
+                animationMouse.style.left = 'auto';
+            } else {
+                // 데스크톱: 기존 위치
+                animationMouse.style.bottom = '20px';
+                animationMouse.style.left = '50px';
+            }
             animationMouse.classList.add('clickable');
         }
         // 다크모드일 때 현재 선택된 색상 테마 적용 (밝게 조정됨)
@@ -416,10 +436,19 @@ document.addEventListener('DOMContentLoaded', function() {
         if (!body.classList.contains('dark-mode')) {
             applyTheme(currentColor);
         }
+        if (themeToggle && isMobile) {
+            // 모바일: 고정 위치
+            themeToggle.style.top = '10px';
+            themeToggle.style.right = '30px';
+            themeToggle.style.bottom = 'auto';
+            themeToggle.style.left = 'auto';
+        }
     }
     
     function toggleTheme() {
         console.log('toggleTheme called, isDarkMode:', isDarkMode);
+        const isMobile = window.innerWidth <= 768;
+        
         if (themeToggle && (themeToggle.classList.contains('flying') || (animationMouse && animationMouse.classList.contains('crawling')))) {
             console.log('Animation in progress, ignoring');
             return; // 애니메이션 중이면 무시
@@ -428,111 +457,147 @@ document.addEventListener('DOMContentLoaded', function() {
         if (isDarkMode) {
             console.log('Switching from dark to light mode');
             // 다크 모드 -> 라이트 모드
-            // 쥐가 왼쪽으로 기어서 사라지는 애니메이션만 실행
-            if (animationMouse) {
-                animationMouse.classList.add('crawling');
-                animationMouse.classList.remove('crawl-in');
-                animationMouse.classList.add('crawl-out');
-                animationMouse.classList.remove('clickable');
-            }
-            
-            setTimeout(() => {
+            if (isMobile) {
+                // 모바일: 애니메이션 없이 즉시 전환
                 if (animationMouse) {
-                    animationMouse.classList.remove('crawl-out', 'crawling');
                     animationMouse.style.opacity = '0';
                 }
-                
-                // 쥐가 사라진 후 새가 그 자리에 나타남 (애니메이션 없이)
                 if (themeToggle) {
                     themeToggle.style.display = 'flex';
-                    themeToggle.style.animation = 'none';
-                    themeToggle.style.transform = 'none';
-                    themeToggle.style.top = '';
-                    themeToggle.style.bottom = '20px';
-                    themeToggle.style.left = '50px';
                     themeToggle.style.opacity = '1';
                 }
-                
                 body.classList.remove('dark-mode');
-                // 다크모드 해제 후 색상 테마 다시 적용
                 applyTheme(currentColor);
                 if (themeIcon) {
                     themeIcon.textContent = '🕊️';
                 }
                 isDarkMode = false;
                 localStorage.setItem('darkMode', 'false');
-            }, 1000);
+            } else {
+                // 데스크톱: 쥐가 왼쪽으로 기어서 사라지는 애니메이션만 실행
+                if (animationMouse) {
+                    animationMouse.classList.add('crawling');
+                    animationMouse.classList.remove('crawl-in');
+                    animationMouse.classList.add('crawl-out');
+                    animationMouse.classList.remove('clickable');
+                }
+                
+                setTimeout(() => {
+                    if (animationMouse) {
+                        animationMouse.classList.remove('crawl-out', 'crawling');
+                        animationMouse.style.opacity = '0';
+                    }
+                    
+                    // 쥐가 사라진 후 새가 그 자리에 나타남 (애니메이션 없이)
+                    if (themeToggle) {
+                        themeToggle.style.display = 'flex';
+                        themeToggle.style.animation = 'none';
+                        themeToggle.style.transform = 'none';
+                        themeToggle.style.top = '';
+                        themeToggle.style.bottom = '20px';
+                        themeToggle.style.left = '50px';
+                        themeToggle.style.opacity = '1';
+                    }
+                    
+                    body.classList.remove('dark-mode');
+                    // 다크모드 해제 후 색상 테마 다시 적용
+                    applyTheme(currentColor);
+                    if (themeIcon) {
+                        themeIcon.textContent = '🕊️';
+                    }
+                    isDarkMode = false;
+                    localStorage.setItem('darkMode', 'false');
+                }, 1000);
+            }
         } else {
             console.log('Switching from light to dark mode');
             // 라이트 모드 -> 다크 모드
-            // 새가 날아가는 애니메이션만 실행
-            if (themeToggle) {
-                // 애니메이션을 방해하는 인라인 스타일 제거
-                themeToggle.style.animation = '';
-                themeToggle.style.transform = '';
-                themeToggle.style.display = 'flex';
-                themeToggle.style.opacity = '1';
-                
-                // 애니메이션 클래스 추가
-                themeToggle.classList.add('flying');
-                themeToggle.classList.add('fly-up');
-                
-                console.log('Fly-up animation started');
-                
-                // 화면 밖으로 사라지는 순간 감지 (약 50% 지점에서 중단)
-                let animationStopped = false;
-                const stopAnimation = function() {
-                    if (!animationStopped && themeToggle) {
-                        animationStopped = true;
-                        console.log('Animation stopped - out of screen');
-                        
-                        // 애니메이션 즉시 중단
-                        themeToggle.style.animation = 'none';
-                        themeToggle.style.transform = 'none';
-                        // 애니메이션 클래스 제거
-                        themeToggle.classList.remove('fly-up', 'flying');
-                        // 완전히 숨기기
-                        themeToggle.style.display = 'none';
-                        themeToggle.style.opacity = '0';
-                        // 위치 초기화
-                        themeToggle.style.top = '';
-                        themeToggle.style.bottom = '';
-                        themeToggle.style.left = '';
-                    }
-                };
-                
-                // 화면 밖으로 나가는 시점(약 0.5초 후)에 애니메이션 중단
-                setTimeout(stopAnimation, 500);
-                
-                // 백업: 애니메이션 종료 이벤트 리스너 (혹시 모를 경우 대비)
-                const handleAnimationEnd = function() {
-                    if (!animationStopped) {
-                        stopAnimation();
-                        themeToggle.removeEventListener('animationend', handleAnimationEnd);
-                    }
-                };
-                
-                themeToggle.addEventListener('animationend', handleAnimationEnd);
-            }
-            
-            // 새가 사라진 후 쥐가 그 자리에 나타남 (애니메이션 없이)
-            setTimeout(() => {
+            if (isMobile) {
+                // 모바일: 애니메이션 없이 즉시 전환
+                if (themeToggle) {
+                    themeToggle.style.display = 'none';
+                    themeToggle.style.opacity = '0';
+                }
                 if (animationMouse) {
                     animationMouse.style.opacity = '1';
-                    animationMouse.style.bottom = '20px';
-                    animationMouse.style.left = '50px';
-                    animationMouse.classList.add('clickable');
                 }
-                
                 body.classList.add('dark-mode');
-                // 다크모드 적용 후 현재 선택된 색상 테마 적용 (밝게 조정됨)
                 applyTheme(currentColor);
                 if (themeIcon) {
                     themeIcon.textContent = '🐁';
                 }
                 isDarkMode = true;
                 localStorage.setItem('darkMode', 'true');
-            }, 600); // 애니메이션이 500ms에 중단되므로 약간의 여유를 두고 실행
+            } else {
+                // 데스크톱: 새가 날아가는 애니메이션만 실행
+                if (themeToggle) {
+                    // 애니메이션을 방해하는 인라인 스타일 제거
+                    themeToggle.style.animation = '';
+                    themeToggle.style.transform = '';
+                    themeToggle.style.display = 'flex';
+                    themeToggle.style.opacity = '1';
+                    
+                    // 애니메이션 클래스 추가
+                    themeToggle.classList.add('flying');
+                    themeToggle.classList.add('fly-up');
+                    
+                    console.log('Fly-up animation started');
+                    
+                    // 화면 밖으로 사라지는 순간 감지 (약 50% 지점에서 중단)
+                    let animationStopped = false;
+                    const stopAnimation = function() {
+                        if (!animationStopped && themeToggle) {
+                            animationStopped = true;
+                            console.log('Animation stopped - out of screen');
+                            
+                            // 애니메이션 즉시 중단
+                            themeToggle.style.animation = 'none';
+                            themeToggle.style.transform = 'none';
+                            // 애니메이션 클래스 제거
+                            themeToggle.classList.remove('fly-up', 'flying');
+                            // 완전히 숨기기
+                            themeToggle.style.display = 'none';
+                            themeToggle.style.opacity = '0';
+                            // 위치 초기화
+                            themeToggle.style.top = '';
+                            themeToggle.style.bottom = '';
+                            themeToggle.style.left = '';
+                        }
+                    };
+                    
+                    // 화면 밖으로 나가는 시점(약 0.5초 후)에 애니메이션 중단
+                    setTimeout(stopAnimation, 500);
+                    
+                    // 백업: 애니메이션 종료 이벤트 리스너 (혹시 모를 경우 대비)
+                    const handleAnimationEnd = function() {
+                        if (!animationStopped) {
+                            stopAnimation();
+                            themeToggle.removeEventListener('animationend', handleAnimationEnd);
+                        }
+                    };
+                    
+                    themeToggle.addEventListener('animationend', handleAnimationEnd);
+                }
+                
+                // 새가 사라진 후 쥐가 그 자리에 나타남 (애니메이션 없이)
+                setTimeout(() => {
+                    if (animationMouse) {
+                        animationMouse.style.opacity = '1';
+                        animationMouse.style.bottom = '20px';
+                        animationMouse.style.left = '50px';
+                        animationMouse.classList.add('clickable');
+                    }
+                    
+                    body.classList.add('dark-mode');
+                    // 다크모드 적용 후 현재 선택된 색상 테마 적용 (밝게 조정됨)
+                    applyTheme(currentColor);
+                    if (themeIcon) {
+                        themeIcon.textContent = '🐁';
+                    }
+                    isDarkMode = true;
+                    localStorage.setItem('darkMode', 'true');
+                }, 600); // 애니메이션이 500ms에 중단되므로 약간의 여유를 두고 실행
+            }
         }
     }
     
@@ -598,7 +663,7 @@ document.addEventListener('DOMContentLoaded', function() {
         colorDot: colorDot
     });
     
-    // 모바일에서 Research 항목 접기/펼치기
+    // 모바일에서 Research 항목 접기/펼치기 (모바일에서만 작동)
     const researchToggleMobile = document.getElementById('research-toggle-mobile');
     const researchList = document.getElementById('research-list');
     
@@ -610,36 +675,53 @@ document.addEventListener('DOMContentLoaded', function() {
         if (checkMobile()) {
             researchList.classList.add('collapsed');
             researchToggleMobile.classList.add('collapsed');
+        } else {
+            // 데스크톱에서는 항상 펼쳐져 있고 클릭 불가
+            researchList.classList.remove('collapsed');
+            researchToggleMobile.classList.remove('collapsed');
+            researchToggleMobile.style.cursor = 'default';
+            researchToggleMobile.style.pointerEvents = 'none';
         }
         
         researchToggleMobile.addEventListener('click', function(e) {
-            if (checkMobile()) {
+            // 모바일에서만 작동
+            if (!checkMobile()) {
                 e.preventDefault();
                 e.stopPropagation();
-                
-                const isCollapsed = researchList.classList.contains('collapsed');
-                
-                if (isCollapsed) {
-                    researchList.classList.remove('collapsed');
-                    researchToggleMobile.classList.remove('collapsed');
-                } else {
-                    researchList.classList.add('collapsed');
-                    researchToggleMobile.classList.add('collapsed');
-                }
+                return;
+            }
+            
+            e.preventDefault();
+            e.stopPropagation();
+            
+            const isCollapsed = researchList.classList.contains('collapsed');
+            
+            if (isCollapsed) {
+                researchList.classList.remove('collapsed');
+                researchToggleMobile.classList.remove('collapsed');
+            } else {
+                researchList.classList.add('collapsed');
+                researchToggleMobile.classList.add('collapsed');
             }
         });
         
         // 화면 크기 변경 시 처리
         window.addEventListener('resize', function() {
             if (checkMobile()) {
-                // 모바일에서는 접혀있음 (사용자가 펼친 경우 제외)
-                if (!researchList.classList.contains('collapsed') && researchList.style.maxHeight === '') {
-                    // 자동으로 접지 않음 (사용자 선택 유지)
+                // 모바일: 토글 가능하도록 설정
+                researchToggleMobile.style.cursor = 'pointer';
+                researchToggleMobile.style.pointerEvents = 'auto';
+                // 초기 상태가 접혀있지 않으면 접기
+                if (!researchList.classList.contains('collapsed') && !localStorage.getItem('researchExpanded')) {
+                    researchList.classList.add('collapsed');
+                    researchToggleMobile.classList.add('collapsed');
                 }
             } else {
-                // 데스크톱에서는 항상 펼쳐져 있음
+                // 데스크톱: 항상 펼쳐져 있고 클릭 불가
                 researchList.classList.remove('collapsed');
                 researchToggleMobile.classList.remove('collapsed');
+                researchToggleMobile.style.cursor = 'default';
+                researchToggleMobile.style.pointerEvents = 'none';
             }
         });
     }
