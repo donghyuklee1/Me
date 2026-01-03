@@ -82,6 +82,18 @@ body {
     pointer-events: none;
 }
 
+/* 데스크톱에서 Research 토글 비활성화 */
+@media (min-width: 769px) {
+    .research-toggle-mobile {
+        cursor: default !important;
+        pointer-events: none !important;
+    }
+    
+    .research-toggle-mobile .toggle-icon {
+        display: none;
+    }
+}
+
 .list {
     list-style: none;
     font-size: 24px;
@@ -971,7 +983,7 @@ body.dark-mode .color-dot {
     
     .left-column {
     position: relative;
-        width: 100%;
+    width: 100%;
         max-width: 100%;
         height: auto;
         padding-right: 0;
@@ -984,7 +996,7 @@ body.dark-mode .color-dot {
     }
     
     .left-column {
-        position: relative;
+    position: relative;
         left: auto;
         width: 100%;
         max-width: 100%;
@@ -1021,8 +1033,8 @@ body.dark-mode .color-dot {
     }
     
     .main-content {
-        display: flex;
-        flex-direction: column;
+    display: flex;
+    flex-direction: column;
         height: auto;
         min-height: 100vh;
     }
@@ -1057,7 +1069,7 @@ body.dark-mode .color-dot {
         margin-bottom: 10px;
     }
     
-    /* Research 토글 (모바일) */
+    /* Research 토글 (모바일에서만) */
     .research-toggle-mobile {
         cursor: pointer;
         pointer-events: auto;
@@ -1158,13 +1170,28 @@ body.dark-mode .color-dot {
     }
     
     .theme-toggle {
-        bottom: auto;
-        top: 10px;
-        left: auto;
-        right: 30px;
+        bottom: auto !important;
+        top: 10px !important;
+        left: auto !important;
+        right: 30px !important;
         width: 14px;
         height: 14px;
         font-size: 14px;
+        position: fixed !important;
+        transform: none !important;
+        animation: none !important;
+    }
+    
+    /* 모바일에서 애니메이션 비활성화 */
+    .theme-toggle.fly-up,
+    .theme-toggle.fly-in,
+    .theme-toggle.flying {
+        animation: none !important;
+        transform: none !important;
+        top: 10px !important;
+        right: 30px !important;
+        bottom: auto !important;
+        left: auto !important;
     }
     
     .memo-toggle {
@@ -1187,13 +1214,27 @@ body.dark-mode .color-dot {
     }
     
     .animation-mouse {
-        bottom: auto;
-        top: 10px;
-        left: auto;
-        right: 30px;
+        bottom: auto !important;
+        top: 10px !important;
+        left: auto !important;
+        right: 30px !important;
         width: 14px;
         height: 14px;
         font-size: 14px;
+        position: fixed !important;
+        transform: none !important;
+        animation: none !important;
+    }
+    
+    /* 모바일에서 마우스 애니메이션 비활성화 */
+    .animation-mouse.crawl-in,
+    .animation-mouse.crawl-out {
+        animation: none !important;
+        transform: none !important;
+        top: 10px !important;
+        right: 30px !important;
+        bottom: auto !important;
+        left: auto !important;
     }
     
     .research-figure-container {
