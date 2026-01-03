@@ -116,9 +116,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // 근황 데이터 (여기에 직접 작성하세요)
     const statusUpdates = [
-        // { date: '2024년 1월 15일', message: '새로운 연구 프로젝트를 시작했습니다.' },
-        // { date: '2024년 1월 20일', message: 'IEEE VR 2023 논문이 게재되었습니다.' },
-        // 더 많은 근황을 추가하려면 위 형식으로 추가하세요
+        { date: '2026년 1월 3일', message: '새로운 사이트로 이전했습니다.' }
     ];
     
     // 근황 표시 함수
@@ -152,12 +150,12 @@ document.addEventListener('DOMContentLoaded', function() {
         nameElement.addEventListener('click', function(e) {
             e.preventDefault();
             // CV PDF 파일 경로 (실제 파일 경로로 변경하세요)
-            const cvPath = 'cv/Donghyuk_Lee_CV.pdf';
+            const cvPath = 'CV.pdf';
             
             // 파일 다운로드
             const link = document.createElement('a');
             link.href = cvPath;
-            link.download = 'Donghyuk_Lee_CV.pdf';
+            link.download = 'CV.pdf';
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
