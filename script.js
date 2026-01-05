@@ -150,12 +150,12 @@ document.addEventListener('DOMContentLoaded', function() {
         nameElement.addEventListener('click', function(e) {
             e.preventDefault();
             // CV PDF 파일 경로 (실제 파일 경로로 변경하세요)
-            const cvPath = 'cv/Donghyuk_Lee_CV.pdf';
+            const cvPath = 'CV.pdf';
             
             // 파일 다운로드
             const link = document.createElement('a');
             link.href = cvPath;
-            link.download = 'Donghyuk_Lee_CV.pdf';
+            link.download = 'CV.pdf';
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
