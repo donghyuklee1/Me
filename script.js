@@ -116,9 +116,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // 근황 데이터 (여기에 직접 작성하세요)
     const statusUpdates = [
-        // { date: '2024년 1월 15일', message: '새로운 연구 프로젝트를 시작했습니다.' },
-        // { date: '2024년 1월 20일', message: 'IEEE VR 2023 논문이 게재되었습니다.' },
-        // 더 많은 근황을 추가하려면 위 형식으로 추가하세요
+        { date: '2026년 1월 3일', message: '새로운 웹사이트로 이전하였습니다.' }
     ];
     
     // 근황 표시 함수
