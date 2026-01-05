@@ -12,15 +12,15 @@
             <div class="left-column">
                 <h1 class="name">DONGHYUK LEE</h1>
                 <div class="section">
-                    <h2 class="section-title">Research:</h2>
-                    <ul class="list">
+                    <h2 class="section-title research-toggle-mobile" id="research-toggle-mobile">Research<span class="toggle-icon">▼</span></h2>
+                    <ul class="list research-list" id="research-list">
                         <li><a href="#" class="menu-item" data-type="research" data-item="1">Light Spectrum Predicting for VR</a></li>
                         <li><a href="#" class="menu-item" data-type="research" data-item="2">DeepMetricEye</a></li>
                         <li><a href="#" class="menu-item" data-type="research" data-item="3">Realistic Earthquake Simulation</a></li>
                         <li><a href="#" class="menu-item" data-type="research" data-item="4">Fungal Morphology Simulation</a></li>
                         <li><a href="#" class="menu-item" data-type="research" data-item="5">Delta-E Color Shift Method</a></li>
                         <li><a href="#" class="menu-item" data-type="research" data-item="6">Semantic Artificial Life System</a></li>
-                        <li><a href="#" class="menu-item" data-type="research" data-item="7">Spinal Postural Wearable Devices</a></li>
+                        <li><a href="#" class="menu-item" data-type="research" data-item="7">Spinal Postural Wearable Devices Review</a></li>
                     </ul>
                 </div>
 
@@ -31,18 +31,23 @@
                 </div>
             </div>
             
+            <!-- 색상 테마 선택기 -->
             <div class="color-picker">
                 <div class="color-dot" id="theme-dot"></div>
             </div>
-        
+            
+            <!-- 다크/라이트 모드 버튼 -->
             <div class="theme-toggle" id="theme-toggle">
                 <span class="theme-icon" id="theme-icon">🕊️</span>
             </div>
             
+            <!-- 메모 버튼 -->
             <div class="memo-toggle" id="memo-toggle"></div>
             
+            <!-- 쥐 애니메이션 요소 -->
             <div class="animation-mouse" id="animation-mouse">🐁</div>
             
+            <!-- 메모 섹션 -->
             <div class="memo-section" id="memo-section" style="display: none;">
                 <div class="memo-content">
                     <div class="memo-header">
@@ -51,10 +56,13 @@
                     </div>
                     <div class="memo-body">
                         <div class="memo-display" id="memo-display">
+                            <!-- 여기에 근황을 작성하세요 -->
+                            <!-- 예시:
                             <div class="memo-entry">
-                                <div class="memo-display-date">01.03.2026</div>
-                                <div class="memo-display-message">I move to my new website</div>
+                                <div class="memo-display-date">2024년 1월 15일</div>
+                                <div class="memo-display-message">새로운 연구 프로젝트를 시작했습니다.</div>
                             </div>
+                            -->
                         </div>
                     </div>
                 </div>
@@ -108,7 +116,8 @@
                     </div>
                 </div>
 
-                <div class="content-section" id="contact-section" style="display: none;">
+                <!-- Contact Section -->
+                 <div class="content-section" id="contact-section" style="display: none;">
                     <div class="section-content-wrapper">
                         <h2 class="section-main-title">Contact</h2>
                         <div class="contact-content">
@@ -128,6 +137,7 @@
                     </div>
                 </div>
 
+                <!-- Research Section 1: Light Spectrum Predicting for VR -->
                 <div class="content-section research-detail-section" id="research-item-1" style="display: none;">
                     <div class="section-content-wrapper">
                         <h2 class="section-main-title">Light Spectrum Predicting for VR</h2>
@@ -161,6 +171,7 @@
                     </div>
                 </div>
 
+                <!-- Research Section 2: DeepMetricEye -->
                 <div class="content-section research-detail-section" id="research-item-2" style="display: none;">
                     <div class="section-content-wrapper">
                         <h2 class="section-main-title">DeepMetricEye</h2>
@@ -216,6 +227,7 @@
                     </div>
                 </div>
 
+                <!-- Research Section 4: Fungal Morphology Simulation -->
                 <div class="content-section research-detail-section" id="research-item-4" style="display: none;">
                     <div class="section-content-wrapper">
                         <h2 class="section-main-title">Fungal Morphology Simulation</h2>
@@ -243,6 +255,7 @@
                     </div>
                 </div>
 
+                <!-- Research Section 5: Delta-E Color Shift Method -->
                 <div class="content-section research-detail-section" id="research-item-5" style="display: none;">
                     <div class="section-content-wrapper">
                         <h2 class="section-main-title">Delta-E Color Shift Method</h2>
@@ -270,6 +283,7 @@
                     </div>
                 </div>
 
+                <!-- Research Section 6: Semantic Artificial Life System -->
                 <div class="content-section research-detail-section" id="research-item-6" style="display: none;">
                     <div class="section-content-wrapper">
                         <h2 class="section-main-title">Semantic Artificial Life System</h2>
@@ -297,6 +311,7 @@
                     </div>
                 </div>
 
+                <!-- Research Section 7: Spinal Postural Wearable Devices Review -->
                 <div class="content-section research-detail-section" id="research-item-7" style="display: none;">
                     <div class="section-content-wrapper">
                         <h2 class="section-main-title">Spinal Postural Wearable Devices Review</h2>
@@ -324,6 +339,7 @@
                     </div>
                 </div>
 
+                <!-- Photos Section -->
                 <div class="content-section" id="photos-section" style="display: none;">
                     <div class="section-content-wrapper">
                         <h2 class="section-main-title">Photos</h2>
@@ -367,4 +383,5 @@
     <script src="script.js"></script>
 </body>
 </html>
+
 
