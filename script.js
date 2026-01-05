@@ -152,12 +152,12 @@ document.addEventListener('DOMContentLoaded', function() {
         nameElement.addEventListener('click', function(e) {
             e.preventDefault();
             // CV PDF 파일 경로 (실제 파일 경로로 변경하세요)
-            const cvPath = 'CV.pdf';
+            const cvPath = 'cv/Donghyuk_Lee_CV.pdf';
             
             // 파일 다운로드
             const link = document.createElement('a');
             link.href = cvPath;
-            link.download = 'CV.pdf';
+            link.download = 'Donghyuk_Lee_CV.pdf';
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
@@ -416,6 +416,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // 쥐가 버튼 위치에 있도록
         if (animationMouse) {
             animationMouse.style.opacity = '1';
+            animationMouse.style.display = 'flex';
             if (isMobile) {
                 // 모바일: 고정 위치
                 animationMouse.style.top = '10px';
@@ -461,10 +462,15 @@ document.addEventListener('DOMContentLoaded', function() {
                 // 모바일: 애니메이션 없이 즉시 전환
                 if (animationMouse) {
                     animationMouse.style.opacity = '0';
+                    animationMouse.style.display = 'none';
                 }
                 if (themeToggle) {
                     themeToggle.style.display = 'flex';
                     themeToggle.style.opacity = '1';
+                    themeToggle.style.top = '10px';
+                    themeToggle.style.right = '30px';
+                    themeToggle.style.bottom = 'auto';
+                    themeToggle.style.left = 'auto';
                 }
                 body.classList.remove('dark-mode');
                 applyTheme(currentColor);
@@ -520,6 +526,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
                 if (animationMouse) {
                     animationMouse.style.opacity = '1';
+                    animationMouse.style.display = 'flex';
+                    animationMouse.style.top = '10px';
+                    animationMouse.style.right = '30px';
+                    animationMouse.style.bottom = 'auto';
+                    animationMouse.style.left = 'auto';
                 }
                 body.classList.add('dark-mode');
                 applyTheme(currentColor);
@@ -607,9 +618,15 @@ document.addEventListener('DOMContentLoaded', function() {
         themeToggle.addEventListener('click', function(e) {
             e.preventDefault();
             e.stopPropagation();
-            console.log('Theme toggle clicked, isDarkMode:', isDarkMode, 'flying:', this.classList.contains('flying'));
-            if (!isDarkMode && !this.classList.contains('flying')) {
-                console.log('Calling toggleTheme from button');
+            const isMobile = window.innerWidth <= 768;
+            console.log('Theme toggle clicked, isDarkMode:', isDarkMode, 'flying:', this.classList.contains('flying'), 'isMobile:', isMobile);
+            
+            // 모바일에서는 항상 작동
+            if (isMobile) {
+                console.log('Calling toggleTheme from button (mobile)');
+                toggleTheme();
+            } else if (!isDarkMode && !this.classList.contains('flying')) {
+                console.log('Calling toggleTheme from button (desktop)');
                 toggleTheme();
             }
         });
@@ -619,9 +636,15 @@ document.addEventListener('DOMContentLoaded', function() {
             themeIcon.addEventListener('click', function(e) {
                 e.preventDefault();
                 e.stopPropagation();
-                console.log('Theme icon clicked, isDarkMode:', isDarkMode);
-                if (!isDarkMode && !themeToggle.classList.contains('flying')) {
-                    console.log('Calling toggleTheme from icon');
+                const isMobile = window.innerWidth <= 768;
+                console.log('Theme icon clicked, isDarkMode:', isDarkMode, 'isMobile:', isMobile);
+                
+                // 모바일에서는 항상 작동
+                if (isMobile) {
+                    console.log('Calling toggleTheme from icon (mobile)');
+                    toggleTheme();
+                } else if (!isDarkMode && !themeToggle.classList.contains('flying')) {
+                    console.log('Calling toggleTheme from icon (desktop)');
                     toggleTheme();
                 }
             });
@@ -635,9 +658,15 @@ document.addEventListener('DOMContentLoaded', function() {
         animationMouse.addEventListener('click', function(e) {
             e.preventDefault();
             e.stopPropagation();
-            console.log('Mouse clicked, isDarkMode:', isDarkMode, 'crawling:', this.classList.contains('crawling'));
-            if (isDarkMode && !this.classList.contains('crawling')) {
-                console.log('Calling toggleTheme from mouse');
+            const isMobile = window.innerWidth <= 768;
+            console.log('Mouse clicked, isDarkMode:', isDarkMode, 'crawling:', this.classList.contains('crawling'), 'isMobile:', isMobile);
+            
+            // 모바일에서는 항상 작동
+            if (isMobile) {
+                console.log('Calling toggleTheme from mouse (mobile)');
+                toggleTheme();
+            } else if (isDarkMode && !this.classList.contains('crawling')) {
+                console.log('Calling toggleTheme from mouse (desktop)');
                 toggleTheme();
             }
         });
